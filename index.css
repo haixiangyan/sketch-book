@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#mycanvas {
+    background: green;
+}
+
+.actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.actions > #brush {
+    display: none;
+}
+
+.actions.is-painting > #brush {
+    display: inline-block;
+}
+
+.actions.is-painting > #eraser {
+    display: none;
+}
