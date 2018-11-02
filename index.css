@@ -7,6 +7,12 @@ body {
     overflow: hidden;
 }
 
+#mycanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .icon {
     width: 1em;
     height: 1em;

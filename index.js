@@ -31,17 +31,22 @@ bindColorsHandlers()
 
 bindSizesHandlers()
 
-bindClearHandler();
+bindClearHandler()
 
-saveEl.onclick = function() {
-    let url = canvasEl.toDataURL('image/png')
-    let a = document.createElement('a')
-    document.body.appendChild(a)
-    a.href = url
-    a.download = 'Result'
-    a.target = '_blank'
-    a.click()
+bindSaveHandler()
+
+function bindSaveHandler() {
+    saveEl.onclick = function () {
+        let url = canvasEl.toDataURL('image/png')
+        let a = document.createElement('a')
+        document.body.appendChild(a)
+        a.href = url
+        a.download = 'Result'
+        a.target = '_blank'
+        a.click()
+    }
 }
+
 
 function bindClearHandler() {
     clearEl.onclick = function () {
