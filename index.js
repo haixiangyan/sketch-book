@@ -12,7 +12,7 @@ let lastPos = {
 
 autoSetCanvasSize(canvasEl)
 
-setMouseListeners(canvasEl, context)
+listenToUser(canvasEl, context)
 
 initEraser(eraserEl, brushEl, actionsEl)
 
@@ -24,42 +24,83 @@ function autoSetCanvasSize(canvasEl) {
     }
 }
 
-function setMouseListeners(canvasEl, context) {
-    canvasEl.onmousedown = function (event) {
-        let x = event.clientX
-        let y = event.clientY
+function listenToUser(canvasEl, context) {
+    if (document.body.ontouchstart !== undefined) {
+        canvasEl.ontouchstart = function (event) {
+            let x = event.touches[0].clientX
+            let y = event.touches[0].clientY
 
-        using = true
+            using = true
 
-        if (isErase) {
-            context.clearRect(x, y, 10, 10)
-        } else {
-            lastPos = {
-                x,
-                y
+            if (isErase) {
+                context.clearRect(x, y, 10, 10)
+            } else {
+                lastPos = {
+                    x,
+                    y
+                }
             }
         }
-    }
 
-    canvasEl.onmousemove = function (event) {
-        if (!using) {
-            return
-        }
-        let x = event.clientX
-        let y = event.clientY
-        if (isErase) {
-            context.clearRect(x - 5, y - 5, 10, 10)
-        } else {
-            drawLine(lastPos.x, lastPos.y, x, y)
-            lastPos = {
-                x,
-                y
+        canvasEl.ontouchmove = function (event) {
+            if (!using) {
+                return
+            }
+            let x = event.touches[0].clientX
+            let y = event.touches[0].clientY
+            if (isErase) {
+                context.clearRect(x - 5, y - 5, 10, 10)
+            } else {
+                drawLine(lastPos.x, lastPos.y, x, y)
+                lastPos = {
+                    x,
+                    y
+                }
             }
         }
-    }
 
-    canvasEl.onmouseup = function (event) {
-        using = false
+        canvasEl.ontouchend = function (event) {
+            using = false
+        }
+    }
+    else {
+        // mouse
+        canvasEl.onmousedown = function (event) {
+            let x = event.clientX
+            let y = event.clientY
+
+            using = true
+
+            if (isErase) {
+                context.clearRect(x, y, 10, 10)
+            } else {
+                lastPos = {
+                    x,
+                    y
+                }
+            }
+        }
+
+        canvasEl.onmousemove = function (event) {
+            if (!using) {
+                return
+            }
+            let x = event.clientX
+            let y = event.clientY
+            if (isErase) {
+                context.clearRect(x - 5, y - 5, 10, 10)
+            } else {
+                drawLine(lastPos.x, lastPos.y, x, y)
+                lastPos = {
+                    x,
+                    y
+                }
+            }
+        }
+
+        canvasEl.onmouseup = function (event) {
+            using = false
+        }
     }
 }
 
