@@ -12,9 +12,35 @@
 <body>
     <canvas width="300" height="300" id="mycanvas"></canvas>
     <div class="actions">
-        <button id="eraser">橡皮擦</button>
-        <button id="brush">画笔</button>
+        <svg id="brush" class="icon active" aria-hidden="true">
+            <use xlink:href="#icon-pen"></use>
+        </svg>
+
+        <svg id="eraser" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shape"></use>
+        </svg>
+
+        <svg id="clear" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-clear"></use>
+        </svg>
+
+        <svg id="save" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-baocun"></use>
+        </svg>
     </div>
+
+    <ol class="colors">
+        <li id="black" class="black active"></li>
+        <li id="red" class="red"></li>
+        <li id="green" class="green"></li>
+        <li id="blue" class="blue"></li>
+    </ol>
+
+    <ol class="sizes">
+        <li id="thin" class="thin"></li>
+        <li id="thick" class="thick"></li>
+    </ol>
+    <script src="//at.alicdn.com/t/font_900506_lhro86zylf.js"></script>
     <script src="index.js"></script>
 </body>
 
