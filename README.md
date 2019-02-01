@@ -1,6 +1,6 @@
-# sketch-demo
-A demo for sketch book.
+# sketch-book
+An online sketch book for drawing and writing notes. It's built with Canvas API provided by H5.
 
-## Demo
+## Website
 
-[Click here to view the demo](https://haixiang6123.github.io/sketch-demo/)
+[Click here to view the sketch book](https://haixiang6123.github.io/sketch-book/)
